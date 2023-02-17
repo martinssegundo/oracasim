@@ -5,7 +5,6 @@ import br.com.tasdua.orcasim.domain.entities.Driver;
 import br.com.tasdua.orcasim.domain.entities.Insurance;
 import br.com.tasdua.orcasim.domain.usercases.ICreateNewInsurance;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class CreateNewInsurance implements ICreateNewInsurance {
