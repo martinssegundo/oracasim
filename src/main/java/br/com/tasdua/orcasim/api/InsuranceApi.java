@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("V1/insurance/budget")
 public class InsuranceApi {
 
-    
+
 
     @PostMapping
     public ResponseEntity<MessageResponseDTO> createNewInsurance(@RequestBody InsuranceDTO insuranceDTO){
