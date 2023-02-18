@@ -1,25 +1,14 @@
 package br.com.tasdua.orcasim.utils;
 
-import br.com.tasdua.orcasim.domain.entities.Car;
-import br.com.tasdua.orcasim.domain.entities.Driver;
 import br.com.tasdua.orcasim.domain.entities.Insurance;
+import br.com.tasdua.orcasim.repository.entities.InsuranceEntity;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.List;
+import java.time.LocalDateTime;
 
 public class InsuranceBuildUtil {
 
     public static Insurance buildNewInsuranceWithCarClaimsAndDriver18AndDriverWithClaim() {
-        var car = Car.builder()
-                .claims(List.of(LocalDate.now()))
-                .drivers(List.of(DriverBuilderUtils.buildMainDriver18WithClains()))
-                .fipeValue(new BigDecimal(85750.35))
-                .manufacturer("FORD")
-                .model("FOCUS")
-                .year("2021")
-                .build();
+        var car = CarBuilderUtil.buildCarWithClaimsAndMainDriver18WithClaims();
         return Insurance.builder()
                 .active(true)
                 .car(car)
@@ -27,14 +16,7 @@ public class InsuranceBuildUtil {
     }
 
     public static Insurance buildNewInsuranceWithCarClaimsAndDriver36AndDriverWithClaim() {
-        var car = Car.builder()
-                .claims(List.of(LocalDate.now()))
-                .drivers(List.of(DriverBuilderUtils.buildMainDriver36WithClains()))
-                .fipeValue(new BigDecimal(85750.35))
-                .manufacturer("FORD")
-                .model("FOCUS")
-                .year("2021")
-                .build();
+        var car = CarBuilderUtil.buildCarWithClaimsAndMainDriver36WithClaims();
         return Insurance.builder()
                 .active(true)
                 .car(car)
@@ -42,14 +24,7 @@ public class InsuranceBuildUtil {
     }
 
     public static Insurance buildNewInsuranceWithCarClaimsAndDriver36AndDriverWithoutClaim() {
-        var car = Car.builder()
-                .claims(List.of(LocalDate.now()))
-                .drivers(List.of(DriverBuilderUtils.buildMainDriver36WithoutClains()))
-                .fipeValue(new BigDecimal(85750.35))
-                .manufacturer("FORD")
-                .model("FOCUS")
-                .year("2021")
-                .build();
+        var car = CarBuilderUtil.buildCarWithClaimsAndMainDriver36WithoutClaims();
         return Insurance.builder()
                 .active(true)
                 .car(car)
@@ -58,23 +33,46 @@ public class InsuranceBuildUtil {
 
 
     public static Insurance buildNewInsuranceWithoutCarClaimsAndDriver36AndDriverWithoutClaim() {
-        var car = Car.builder()
-                .drivers(List.of(
-                                Driver.builder()
-                                        .name("Luiz")
-                                        .document("123456")
-                                        .bithday(LocalDate.of(1987, Month.FEBRUARY,10))
-                                        .build()
-                        )
-                )
-                .fipeValue(new BigDecimal(85750.35))
-                .manufacturer("FORD")
-                .model("FOCUS")
-                .year("2021")
-                .build();
+        var car = CarBuilderUtil.buildCarWithoutClaimsAndMainDriver36WithoutClaims();
         return Insurance.builder()
                 .active(true)
                 .car(car)
+                .build();
+    }
+
+
+    public static Insurance buildNewInsuranceWithoutCarClaimsAndDriver36WithoutCustumerAndDriverWithoutClaim() {
+        var car = CarBuilderUtil.buildCarWithoutClaimsAndMainDriver36WithCustumerWithoutClaims();
+        return Insurance.builder()
+                .active(true)
+                .car(car)
+                .build();
+    }
+
+    public static Insurance buildNewInsuranceWithoutCarClaimsAndMainDriver36AndCustumerAndDriverWithoutClaim() {
+        var car = CarBuilderUtil.buildCarWithoutClaimsAndMainDriver36WithoutClaims();
+        return Insurance.builder()
+                .active(true)
+                .car(car)
+                .build();
+    }
+
+    public static Insurance buildNewInsuranceWithoutCarClaimsAndMainDriver36AndWithoutCustumerAndDriverWithoutClaim() {
+        var car = CarBuilderUtil.buildCarWithoutClaimsAndMainDriver36WithoutClaims();
+        return Insurance.builder()
+                .active(true)
+                .car(car)
+                .build();
+    }
+
+    public static InsuranceEntity buildNewInsuranceEntityWithoutCarClaimsAndDriver36AndDriverWithoutClaimWithID() {
+        return InsuranceEntity.builder()
+                .id(1L)
+                .active(true)
+                .car(CarBuilderUtil.buildCarEntityWithID())
+                .custumer(CustumerBuilderUtil.buildCustumerEntity())
+                .creationDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
                 .build();
     }
 }

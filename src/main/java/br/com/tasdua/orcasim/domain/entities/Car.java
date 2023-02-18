@@ -1,5 +1,7 @@
 package br.com.tasdua.orcasim.domain.entities;
 
+import br.com.tasdua.orcasim.domain.excptions.CustumerNotFoundException;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -7,12 +9,27 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Car {
 
+    private Long id;
     private String model;
-    private String manufacturer;
+    private String manufactured;
     private String year;
     private BigDecimal fipeValue;
     private List<LocalDate> claims;
     private List<Driver> drivers;
+
+    private Car(Builder builder) {
+        id = builder.id;
+        model = builder.model;
+        manufactured = builder.manufacturer;
+        year = builder.year;
+        fipeValue = builder.fipeValue;
+        claims = builder.claims;
+        drivers = builder.drivers;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
 
     public boolean hasNoClaim(){
         return claims == null || claims.isEmpty();
@@ -39,6 +56,21 @@ public class Car {
         return totalRisk;
     }
 
+    public Driver findCustumer() throws CustumerNotFoundException {
+        var driverFinded = drivers.stream()
+                .filter(driver -> driver.isCustumer())
+                .findFirst();
+        return driverFinded.orElseThrow(() -> new CustumerNotFoundException());
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getModel() {
         return model;
     }
@@ -47,12 +79,12 @@ public class Car {
         this.model = model;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+    public String getManufactured() {
+        return manufactured;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setManufactured(String manufactured) {
+        this.manufactured = manufactured;
     }
 
     public String getYear() {
@@ -72,6 +104,8 @@ public class Car {
     }
 
     public List<LocalDate> getClaims() {
+        if(claims == null)
+            claims = List.of();
         return claims;
     }
 
@@ -80,6 +114,8 @@ public class Car {
     }
 
     public List<Driver> getDrivers() {
+        if(drivers == null)
+            drivers = List.of();
         return drivers;
     }
 
@@ -87,20 +123,8 @@ public class Car {
         this.drivers = drivers;
     }
 
-    private Car(Builder builder) {
-        model = builder.model;
-        manufacturer = builder.manufacturer;
-        year = builder.year;
-        fipeValue = builder.fipeValue;
-        claims = builder.claims;
-        drivers = builder.drivers;
-    }
-
-    public static Builder builder() {
-        return new Builder();
-    }
-
     public static final class Builder {
+        private Long id;
         private String model;
         private String manufacturer;
         private String year;
@@ -111,12 +135,17 @@ public class Car {
         private Builder() {
         }
 
+        public Builder id(Long val) {
+            id = val;
+            return this;
+        }
+
         public Builder model(String val) {
             model = val;
             return this;
         }
 
-        public Builder manufacturer(String val) {
+        public Builder manufactured(String val) {
             manufacturer = val;
             return this;
         }

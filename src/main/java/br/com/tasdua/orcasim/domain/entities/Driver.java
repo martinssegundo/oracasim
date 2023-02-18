@@ -4,11 +4,28 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Driver {
+    private Long id;
     private String name;
     private String document;
     private LocalDate bithday;
     private boolean mainDriver;
+    private boolean custumer;
     private List<LocalDate> claims;
+
+    private Driver(Builder builder) {
+        id = builder.id;
+        name = builder.name;
+        document = builder.document;
+        bithday = builder.bithday;
+        mainDriver = builder.mainDriver;
+        custumer = builder.custumer;
+        claims = builder.claims;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
 
     public boolean hasNoClaim(){
         return mainDriver
@@ -25,6 +42,13 @@ public class Driver {
         return LocalDate.now().getYear() - bithday.getYear();
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -50,14 +74,6 @@ public class Driver {
         this.bithday = bithday;
     }
 
-    public List<LocalDate> getClaims() {
-        return claims;
-    }
-
-    public void setClaims(List<LocalDate> claims) {
-        this.claims = claims;
-    }
-
     public boolean isMainDriver() {
         return mainDriver;
     }
@@ -66,27 +82,39 @@ public class Driver {
         this.mainDriver = mainDriver;
     }
 
-
-    private Driver(Builder builder) {
-        setName(builder.name);
-        setDocument(builder.document);
-        setBithday(builder.bithday);
-        mainDriver = builder.mainDriver;
-        setClaims(builder.claims);
+    public boolean isCustumer() {
+        return custumer;
     }
 
-    public static Builder builder() {
-        return new Builder();
+    public void setCustumer(boolean custumer) {
+        this.custumer = custumer;
+    }
+
+    public List<LocalDate> getClaims() {
+        if(claims == null)
+            claims = List.of();
+        return claims;
+    }
+
+    public void setClaims(List<LocalDate> claims) {
+        this.claims = claims;
     }
 
     public static final class Builder {
+        private Long id;
         private String name;
         private String document;
         private LocalDate bithday;
         private boolean mainDriver;
+        private boolean custumer;
         private List<LocalDate> claims;
 
         private Builder() {
+        }
+
+        public Builder id(Long val) {
+            id = val;
+            return this;
         }
 
         public Builder name(String val) {
@@ -106,6 +134,11 @@ public class Driver {
 
         public Builder mainDriver(boolean val) {
             mainDriver = val;
+            return this;
+        }
+
+        public Builder custumer(boolean val) {
+            custumer = val;
             return this;
         }
 

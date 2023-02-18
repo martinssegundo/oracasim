@@ -4,11 +4,12 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class Insurance {
-
+    private Long id;
     private Car car;
     private boolean active;
 
     private Insurance(Builder builder) {
+        id = builder.id;
         car = builder.car;
         active = builder.active;
     }
@@ -16,6 +17,7 @@ public class Insurance {
     public static Builder builder() {
         return new Builder();
     }
+
 
     public BigDecimal calculateValue(int startValueInsurance,
                                      int startAgeWithRisk,
@@ -27,6 +29,13 @@ public class Insurance {
         return car.getFipeValue().multiply(multiplyer).setScale(2, RoundingMode.HALF_UP);
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Car getCar() {
         return car;
@@ -45,10 +54,16 @@ public class Insurance {
     }
 
     public static final class Builder {
+        private Long id;
         private Car car;
         private boolean active;
 
         private Builder() {
+        }
+
+        public Builder id(Long val) {
+            id = val;
+            return this;
         }
 
         public Builder car(Car val) {

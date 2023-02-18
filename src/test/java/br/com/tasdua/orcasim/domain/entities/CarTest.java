@@ -1,5 +1,6 @@
 package br.com.tasdua.orcasim.domain.entities;
 
+import br.com.tasdua.orcasim.domain.excptions.CustumerNotFoundException;
 import br.com.tasdua.orcasim.utils.CarBuilderUtil;
 import org.junit.jupiter.api.Test;
 
@@ -43,4 +44,10 @@ class CarTest {
                 car.varifyMainDriversHasRisk(18,25));
     }
 
+
+    @Test
+    void testFindCustumerIdentificationTrue() throws CustumerNotFoundException {
+        var car = CarBuilderUtil.buildCarWithoutClaimsAndMainDriver36WithoutClaims();
+        assertNotNull(car.findCustumer());
+    }
 }

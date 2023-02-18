@@ -1,6 +1,7 @@
 package br.com.tasdua.orcasim.utils;
 
 import br.com.tasdua.orcasim.domain.entities.Driver;
+import br.com.tasdua.orcasim.repository.entities.DriverEntity;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -35,6 +36,39 @@ public class DriverBuilderUtils {
                 .document("123456")
                 .bithday(LocalDate.of(LocalDate.now().getYear()-36, Month.FEBRUARY,10))
                 .mainDriver(true)
+                .custumer(true)
+                .build();
+    }
+
+
+    public static Driver buildMainDriver36WithoutClainsWithID(){
+        return  Driver.builder()
+                .id(1L)
+                .name("Luiz")
+                .document("123456")
+                .bithday(LocalDate.of(LocalDate.now().getYear()-36, Month.FEBRUARY,10))
+                .mainDriver(true)
+                .custumer(true)
+                .build();
+    }
+
+    public static Driver buildMainDriver36WithoutCustumerWithoutClainsWithID(){
+        return  Driver.builder()
+                .id(1L)
+                .name("Luiz")
+                .document("123456")
+                .bithday(LocalDate.of(LocalDate.now().getYear()-36, Month.FEBRUARY,10))
+                .mainDriver(true)
+                .custumer(false)
+                .build();
+    }
+
+
+    public static DriverEntity buildMainDriverEntity36WithoutClainsWithID(){
+        return  DriverEntity.builder()
+                .id(1L)
+                .document("123456")
+                .bithdate(LocalDate.of(LocalDate.now().getYear()-36, Month.FEBRUARY,10))
                 .build();
     }
 }
