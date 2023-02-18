@@ -21,10 +21,12 @@ public interface IInsuranceApi {
     @Operation(summary = "Add new Insurance",
             description = "Add new Insurance with all informations")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201"),
-            @ApiResponse(responseCode = "400", content = @Content(schema = @Schema(implementation = ErrorDataDTO.class)))
+            @ApiResponse(responseCode = "200",
+                    content = @Content(schema = @Schema(implementation = ResponseInsuraceDTO.class))),
+            @ApiResponse(responseCode = "400",
+                    content = @Content(schema = @Schema(implementation = ErrorDataDTO.class)))
     })
-    ResponseEntity<MessageResponseDTO> createNewInsurance(@RequestBody InsuranceDTO insuranceDTO) throws InsuranceException;
+    ResponseEntity<ResponseInsuraceDTO> createNewInsurance(@RequestBody InsuranceDTO insuranceDTO) throws InsuranceException;
 
     @Operation
     ResponseEntity<ResponseInsuraceDTO> findInsuranceById(@PathParam("insuranceId") Long insuranceId);

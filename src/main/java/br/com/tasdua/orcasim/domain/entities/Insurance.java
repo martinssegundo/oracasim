@@ -6,18 +6,19 @@ import java.math.RoundingMode;
 public class Insurance {
     private Long id;
     private Car car;
+    private BigDecimal calculatedValue;
     private boolean active;
 
     private Insurance(Builder builder) {
         id = builder.id;
         car = builder.car;
+        calculatedValue = builder.calculatedValue;
         active = builder.active;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-
 
     public BigDecimal calculateValue(int startValueInsurance,
                                      int startAgeWithRisk,
@@ -45,6 +46,14 @@ public class Insurance {
         this.car = car;
     }
 
+    public BigDecimal getCalculatedValue() {
+        return calculatedValue;
+    }
+
+    public void setCalculatedValue(BigDecimal calculatedValue) {
+        this.calculatedValue = calculatedValue;
+    }
+
     public boolean isActive() {
         return active;
     }
@@ -56,6 +65,7 @@ public class Insurance {
     public static final class Builder {
         private Long id;
         private Car car;
+        private BigDecimal calculatedValue;
         private boolean active;
 
         private Builder() {
@@ -68,6 +78,11 @@ public class Insurance {
 
         public Builder car(Car val) {
             car = val;
+            return this;
+        }
+
+        public Builder calculatedValue(BigDecimal val) {
+            calculatedValue = val;
             return this;
         }
 

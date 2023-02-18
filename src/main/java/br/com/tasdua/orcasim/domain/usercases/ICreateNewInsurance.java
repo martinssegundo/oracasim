@@ -5,5 +5,6 @@ import br.com.tasdua.orcasim.domain.excptions.InsuranceException;
 
 public interface ICreateNewInsurance {
 
-    void newInsurance(Insurance insurance) throws InsuranceException;
+    Insurance newInsurance(Insurance insurance, int defaulPercentInsuramce,
+                      int ageRiskStart, int ageRiskFinal) throws InsuranceException;
 }

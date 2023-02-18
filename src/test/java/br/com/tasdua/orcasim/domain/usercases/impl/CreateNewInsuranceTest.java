@@ -19,6 +19,9 @@ import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CreateNewInsuranceTest {
+    private static final int DEFAULT_PERCENT_INSURANCE_STARTER = 6;
+    private static final int AGE_RISK_START = 18;
+    private static final int AGE_RISK_FINAL = 25;
     @Mock
     InsuranceRepository insuranceRepository;
     @Mock
@@ -67,10 +70,15 @@ class CreateNewInsuranceTest {
                                 .buildNewInsuranceEntityWithoutCarClaimsAndDriver36AndDriverWithoutClaimWithID()
                 );
 
-        createNewInsurance.newInsurance(
+        var insurance = createNewInsurance.newInsurance(
                 InsuranceBuildUtil
-                        .buildNewInsuranceWithoutCarClaimsAndMainDriver36AndCustumerAndDriverWithoutClaim()
+                        .buildNewInsuranceWithoutCarClaimsAndMainDriver36AndCustumerAndDriverWithoutClaim(),
+                DEFAULT_PERCENT_INSURANCE_STARTER,
+                AGE_RISK_START,
+                AGE_RISK_FINAL
         );
+
+        assertNotNull(insurance);
     }
 
 
@@ -101,7 +109,10 @@ class CreateNewInsuranceTest {
         assertThrows(InsuranceException.class,
                 () -> createNewInsurance.newInsurance(
                         InsuranceBuildUtil
-                                .buildNewInsuranceWithoutCarClaimsAndDriver36WithoutCustumerAndDriverWithoutClaim()
+                                .buildNewInsuranceWithoutCarClaimsAndDriver36WithoutCustumerAndDriverWithoutClaim(),
+                        DEFAULT_PERCENT_INSURANCE_STARTER,
+                        AGE_RISK_START,
+                        AGE_RISK_FINAL
                 )
         );
     }
@@ -111,7 +122,10 @@ class CreateNewInsuranceTest {
         assertThrows(InsuranceException.class,
                 () -> createNewInsurance.newInsurance(
                         InsuranceBuildUtil
-                                .buildNewInsuranceWithoutCar()
+                                .buildNewInsuranceWithoutCar(),
+                        DEFAULT_PERCENT_INSURANCE_STARTER,
+                        AGE_RISK_START,
+                        AGE_RISK_FINAL
                 )
         );
     }
@@ -128,7 +142,10 @@ class CreateNewInsuranceTest {
         assertThrows(InsuranceException.class,
                 () -> createNewInsurance.newInsurance(
                         InsuranceBuildUtil
-                                .buildNewInsuranceWithCarWithoutDriver()
+                                .buildNewInsuranceWithCarWithoutDriver(),
+                        DEFAULT_PERCENT_INSURANCE_STARTER,
+                        AGE_RISK_START,
+                        AGE_RISK_FINAL
                 )
         );
     }

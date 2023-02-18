@@ -1,6 +1,6 @@
 package br.com.tasdua.orcasim.api.dto.response;
 
-import br.com.tasdua.orcasim.api.dto.request.InsuranceDTO;
+import br.com.tasdua.orcasim.api.dto.response.data.InsuranceSummary;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class ResponseInsuraceDTO {
-    public InsuranceDTO data;
+    public InsuranceSummary data;
 }

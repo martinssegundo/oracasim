@@ -1,6 +1,7 @@
 package br.com.tasdua.orcasim.domain.usercases.impl;
 
 import br.com.tasdua.orcasim.domain.entities.Car;
+import br.com.tasdua.orcasim.domain.entities.Custumer;
 import br.com.tasdua.orcasim.domain.entities.Driver;
 import br.com.tasdua.orcasim.domain.entities.Insurance;
 import br.com.tasdua.orcasim.domain.excptions.CarNotFoundException;
@@ -43,23 +44,34 @@ public class CreateNewInsurance implements ICreateNewInsurance {
     }
 
     @Override
-    public void newInsurance(Insurance insurance) throws InsuranceException {
+    public Insurance newInsurance(Insurance insurance, int defaulPercentInsuramce,
+                             int ageRiskStart, int ageRiskFinal) throws InsuranceException {
         try {
             createNewCar(insurance.getCar());
             createDrivers(insurance.getCar());
-            createCustumer(insurance.getCar().findCustumer());
             createNewClaimsCar(insurance.getCar());
-        }catch (CustumerNotFoundException custumerNotFoundException) {
+            var custumer = createCustumer(insurance.getCar().findCustumer());
+            var insuranceSaved = insuranceRepository.save(
+                    repositoryDomainMapper
+                            .convertToInsuranceEntity(insurance, custumer, insurance.getCar()
+                            )
+            );
+            insurance.setId(insuranceSaved.getId());
+            insurance.setCalculatedValue(
+                    insurance.calculateValue(defaulPercentInsuramce,ageRiskStart,ageRiskFinal));
+            return insurance;
+
+        } catch (CustumerNotFoundException custumerNotFoundException) {
             throw new InsuranceException(CUSTUMER_NOT_FOUND, "No custumer indentified");
-        }catch (CarNotFoundException carNotFoundException){
+        } catch (CarNotFoundException carNotFoundException) {
             throw new InsuranceException(CAR_NOT_FOUND, "No car indentified");
-        }catch (DriverNotFoundException driverNotFoundException){
+        } catch (DriverNotFoundException driverNotFoundException) {
             throw new InsuranceException(DRIVE_NOT_FOUND, "No drivers indentified");
         }
     }
 
     private void createNewCar(Car car) throws CarNotFoundException {
-        if(car == null)
+        if (car == null)
             throw new CarNotFoundException();
         var savedCar = repositoryDomainMapper.convertToCar(
                 this.carRepository.save(repositoryDomainMapper.convertToCarEntity(car))
@@ -68,7 +80,7 @@ public class CreateNewInsurance implements ICreateNewInsurance {
     }
 
     private void createDrivers(Car car) throws DriverNotFoundException {
-        if(car.getDrivers().isEmpty())
+        if (car.getDrivers().isEmpty())
             throw new DriverNotFoundException();
         car.getDrivers().forEach(driver -> {
                     var driverSaved = repositoryDomainMapper.convertToDriver(
@@ -78,19 +90,20 @@ public class CreateNewInsurance implements ICreateNewInsurance {
                     );
                     driver.setId(driverSaved.getId());
                     createNewClaimsDrivers(driverSaved);
-                    createCarDriver(car,driver);
+                    createCarDriver(car, driver);
                 }
         );
     }
 
-    private void createCustumer(Driver driver) {
-        custumerRepository.save(
-                repositoryDomainMapper.convertToCustumerEntity(driver)
-        );
+    private Custumer createCustumer(Driver driver) {
+        return repositoryDomainMapper.convertToCustumer(
+                custumerRepository.save(
+                        repositoryDomainMapper.convertToCustumerEntity(driver)
+                ));
     }
 
-    private void createCarDriver(Car car, Driver driver){
-        carDriveRepository.save(repositoryDomainMapper.convertToCarDriverEntity(car,driver));
+    private void createCarDriver(Car car, Driver driver) {
+        carDriveRepository.save(repositoryDomainMapper.convertToCarDriverEntity(car, driver));
     }
 
 
