@@ -1,4 +1,4 @@
-package br.com.tasdua.orcasim.api.dto.request;
+package br.com.tasdua.orcasim.api.dto.request.updateInsurance;
 
 
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class InsuranceDTO {
-    private CarDTO car;
+public class UpdateInsuranceDTO {
+    private UpdateCarDTO car;
     private boolean active;
 }

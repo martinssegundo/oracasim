@@ -1,9 +1,6 @@
 package br.com.tasdua.orcasim.mappers;
 
-import br.com.tasdua.orcasim.domain.entities.Car;
-import br.com.tasdua.orcasim.domain.entities.Custumer;
-import br.com.tasdua.orcasim.domain.entities.Driver;
-import br.com.tasdua.orcasim.domain.entities.Insurance;
+import br.com.tasdua.orcasim.domain.entities.*;
 import br.com.tasdua.orcasim.repository.entities.*;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
@@ -15,6 +12,8 @@ import java.time.LocalDate;
 public interface RepositoryDomainMapper {
     CarEntity convertToCarEntity(Car car);
 
+    @Mapping(target = "calculatedValue", ignore = true)
+    @Mapping(source = "insuranceEntity.car",target = "car")
     Insurance convertToInsurance(InsuranceEntity insuranceEntity);
 
     @Mapping(source = "carDomain.id", target = "car.id")
@@ -27,14 +26,25 @@ public interface RepositoryDomainMapper {
                                              Custumer custumerDomain,
                                              Car carDomain);
 
-    @Mapping(source = "driver.id",target = "id")
+    InsuranceEntity convertToInsuranceEntity(Insurance insurance);
+
+    @Mapping(source = "driverDomain.id",target = "driver.id")
     @Mapping(source = "claimDate",target = "claimDate")
-    ClaimsEntity convertToDriverClaimsEntity(Driver driver, LocalDate claimDate);
+    @Mapping(target = "id", ignore = true)
+    ClaimsEntity convertToDriverClaimsEntity(Driver driverDomain, LocalDate claimDate);
 
 
-    @Mapping(source = "car.id",target = "id")
+    @Mapping(source = "carDomain.id",target = "car.id")
     @Mapping(source = "claimDate",target = "claimDate")
-    ClaimsEntity convertToCarClaimsEntity(Car car, LocalDate claimDate);
+    @Mapping(target = "id", ignore = true)
+    ClaimsEntity convertToCarClaimsEntity(Car carDomain, LocalDate claimDate);
+
+
+    @Mapping(source = "claim.car",target = "car.id")
+    @Mapping(source = "claim.driver",target = "driver.id")
+    @Mapping(source = "claim.id",target = "id")
+    @Mapping(source = "claim.claimDate", target = "claimDate")
+    ClaimsEntity convertToClaimsEntity(Claim claim);
 
 
     @Mapping(source = "driver.id",target = "id")
@@ -64,6 +74,7 @@ public interface RepositoryDomainMapper {
 
 
     @Mapping(source = "driverDomain.id",target = "driver.id")
+    @Mapping(target = "id", ignore = true)
     CustumerEntity convertToCustumerEntity(Driver driverDomain);
 
 

@@ -10,7 +10,7 @@ public class Driver {
     private LocalDate bithday;
     private boolean mainDriver;
     private boolean custumer;
-    private List<LocalDate> claims;
+    private List<Claim> claims;
 
     private Driver(Builder builder) {
         id = builder.id;
@@ -25,7 +25,6 @@ public class Driver {
     public static Builder builder() {
         return new Builder();
     }
-
 
     public boolean hasNoClaim(){
         return mainDriver
@@ -90,13 +89,13 @@ public class Driver {
         this.custumer = custumer;
     }
 
-    public List<LocalDate> getClaims() {
+    public List<Claim> getClaims() {
         if(claims == null)
             claims = List.of();
         return claims;
     }
 
-    public void setClaims(List<LocalDate> claims) {
+    public void setClaims(List<Claim> claims) {
         this.claims = claims;
     }
 
@@ -107,7 +106,7 @@ public class Driver {
         private LocalDate bithday;
         private boolean mainDriver;
         private boolean custumer;
-        private List<LocalDate> claims;
+        private List<Claim> claims;
 
         private Builder() {
         }
@@ -142,7 +141,7 @@ public class Driver {
             return this;
         }
 
-        public Builder claims(List<LocalDate> val) {
+        public Builder claims(List<Claim> val) {
             claims = val;
             return this;
         }

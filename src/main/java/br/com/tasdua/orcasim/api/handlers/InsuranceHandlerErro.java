@@ -20,8 +20,8 @@ public class InsuranceHandlerErro extends ResponseEntityExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST)
                 .body(ErrorDataDTO.builder()
                         .data(ErrorDTO.builder()
-                                .code(insuranceException.getCode())
-                                .mesage(insuranceException.getMessage())
+                                .code(insuranceException.getError().getCode())
+                                .mesage(insuranceException.getError().getMesage())
                                 .build())
                         .build());
     }

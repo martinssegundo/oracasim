@@ -1,11 +1,12 @@
 package br.com.tasdua.orcasim.api.impl;
 
 import br.com.tasdua.orcasim.api.IInsuranceApi;
-import br.com.tasdua.orcasim.api.dto.request.InsuranceDTO;
+import br.com.tasdua.orcasim.api.dto.request.newInsurace.NewInsuranceDTO;
+import br.com.tasdua.orcasim.api.dto.request.updateInsurance.UpdateInsuranceDTO;
 import br.com.tasdua.orcasim.api.dto.response.MessageResponseDTO;
 import br.com.tasdua.orcasim.api.dto.response.ResponseInsuraceDTO;
 import br.com.tasdua.orcasim.domain.excptions.InsuranceException;
-import br.com.tasdua.orcasim.domain.usercases.ICreateNewInsurance;
+import br.com.tasdua.orcasim.domain.usecases.ICreateNewInsurance;
 import br.com.tasdua.orcasim.mappers.InsuranceMapper;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +38,10 @@ public class InsuranceApi implements IInsuranceApi {
 
 
     @PostMapping
-    public ResponseEntity<ResponseInsuraceDTO> createNewInsurance(@RequestBody InsuranceDTO insuranceDTO) throws InsuranceException {
+    public ResponseEntity<ResponseInsuraceDTO> createNewInsurance(@RequestBody NewInsuranceDTO newInsuranceDTO) throws InsuranceException {
         var insuranceSummary = insuranceMapper.convcertToInsuranceSummary(
                 newInsuramceUserCase
-                        .newInsurance(insuranceMapper.convcertToInsurance(insuranceDTO),
+                        .create(insuranceMapper.convcertToInsurance(newInsuranceDTO),
                                 defaulPercentInsuramce,
                                 ageRiskStarter,
                                 ageRiskFinal)
@@ -59,7 +60,7 @@ public class InsuranceApi implements IInsuranceApi {
 
     @PostMapping("/{insuranceId}")
     public ResponseEntity<MessageResponseDTO> updateInsurance(@PathParam("insuranceId") Long insuranceId,
-                                                              @RequestBody InsuranceDTO insuranceDTO) {
+                                                              @RequestBody UpdateInsuranceDTO newInsuranceDTO) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(MessageResponseDTO.builder()
                         .data("Orcamento atualizado com sucesso")

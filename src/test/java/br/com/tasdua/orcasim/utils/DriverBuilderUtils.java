@@ -1,5 +1,6 @@
 package br.com.tasdua.orcasim.utils;
 
+import br.com.tasdua.orcasim.domain.entities.Claim;
 import br.com.tasdua.orcasim.domain.entities.Driver;
 import br.com.tasdua.orcasim.repository.entities.DriverEntity;
 
@@ -14,7 +15,7 @@ public class DriverBuilderUtils {
                 .name("Luiz")
                 .document("123456")
                 .bithday(LocalDate.of(LocalDate.now().getYear()-18, Month.FEBRUARY,10))
-                .claims(List.of(LocalDate.now()))
+                .claims(List.of(Claim.builder().claimDate(LocalDate.now()).build()))
                 .mainDriver(true)
                 .build();
     }
@@ -24,7 +25,7 @@ public class DriverBuilderUtils {
                 .name("Luiz")
                 .document("123456")
                 .bithday(LocalDate.of(LocalDate.now().getYear()-36, Month.FEBRUARY,10))
-                .claims(List.of(LocalDate.now()))
+                .claims(List.of(Claim.builder().claimDate(LocalDate.now()).build()))
                 .mainDriver(true)
                 .build();
     }

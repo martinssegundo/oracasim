@@ -3,7 +3,6 @@ package br.com.tasdua.orcasim.domain.entities;
 import br.com.tasdua.orcasim.domain.excptions.CustumerNotFoundException;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,13 +13,13 @@ public class Car {
     private String manufactured;
     private String year;
     private BigDecimal fipeValue;
-    private List<LocalDate> claims;
+    private List<Claim> claims;
     private List<Driver> drivers;
 
     private Car(Builder builder) {
         id = builder.id;
         model = builder.model;
-        manufactured = builder.manufacturer;
+        manufactured = builder.manufactured;
         year = builder.year;
         fipeValue = builder.fipeValue;
         claims = builder.claims;
@@ -30,6 +29,7 @@ public class Car {
     public static Builder builder() {
         return new Builder();
     }
+
 
     public boolean hasNoClaim(){
         return claims == null || claims.isEmpty();
@@ -103,13 +103,13 @@ public class Car {
         this.fipeValue = fipeValue;
     }
 
-    public List<LocalDate> getClaims() {
+    public List<Claim> getClaims() {
         if(claims == null)
             claims = List.of();
         return claims;
     }
 
-    public void setClaims(List<LocalDate> claims) {
+    public void setClaims(List<Claim> claims) {
         this.claims = claims;
     }
 
@@ -126,10 +126,10 @@ public class Car {
     public static final class Builder {
         private Long id;
         private String model;
-        private String manufacturer;
+        private String manufactured;
         private String year;
         private BigDecimal fipeValue;
-        private List<LocalDate> claims;
+        private List<Claim> claims;
         private List<Driver> drivers;
 
         private Builder() {
@@ -146,7 +146,7 @@ public class Car {
         }
 
         public Builder manufactured(String val) {
-            manufacturer = val;
+            manufactured = val;
             return this;
         }
 
@@ -160,7 +160,7 @@ public class Car {
             return this;
         }
 
-        public Builder claims(List<LocalDate> val) {
+        public Builder claims(List<Claim> val) {
             claims = val;
             return this;
         }

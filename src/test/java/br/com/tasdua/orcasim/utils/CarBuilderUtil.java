@@ -1,6 +1,7 @@
 package br.com.tasdua.orcasim.utils;
 
 import br.com.tasdua.orcasim.domain.entities.Car;
+import br.com.tasdua.orcasim.domain.entities.Claim;
 import br.com.tasdua.orcasim.repository.entities.CarEntity;
 
 import java.math.BigDecimal;
@@ -15,7 +16,7 @@ public class CarBuilderUtil {
                 .model("Focus")
                 .manufactured("Ford")
                 .fipeValue(new BigDecimal(85750.35))
-                .claims(List.of(LocalDate.now()))
+                .claims(List.of(Claim.builder().claimDate(LocalDate.now()).build()))
                 .build();
     }
 
@@ -26,7 +27,7 @@ public class CarBuilderUtil {
                 .manufactured("Ford")
                 .fipeValue(new BigDecimal(85750.35))
                 .drivers(List.of(DriverBuilderUtils.buildMainDriver18WithClains()))
-                .claims(List.of(LocalDate.now()))
+                .claims(List.of(Claim.builder().claimDate(LocalDate.now()).build()))
                 .build();
     }
 
@@ -38,7 +39,7 @@ public class CarBuilderUtil {
                 .manufactured("Ford")
                 .fipeValue(new BigDecimal(85750.35))
                 .drivers(List.of(DriverBuilderUtils.buildMainDriver36WithClains()))
-                .claims(List.of(LocalDate.now()))
+                .claims(List.of(Claim.builder().claimDate(LocalDate.now()).build()))
                 .build();
     }
 
@@ -49,7 +50,7 @@ public class CarBuilderUtil {
                 .manufactured("Ford")
                 .fipeValue(new BigDecimal(85750.35))
                 .drivers(List.of(DriverBuilderUtils.buildMainDriver36WithoutClains()))
-                .claims(List.of(LocalDate.now()))
+                .claims(List.of(Claim.builder().claimDate(LocalDate.now()).build()))
                 .build();
     }
 
@@ -76,6 +77,17 @@ public class CarBuilderUtil {
 
     public static Car buildCarWithoutClaimsAndMainDriver36WithCustumerWithoutClaims(){
         return Car.builder()
+                .year("2020")
+                .model("Focus")
+                .manufactured("Ford")
+                .fipeValue(new BigDecimal(85750.35))
+                .drivers(List.of(DriverBuilderUtils.buildMainDriver36WithoutCustumerWithoutClainsWithID()))
+                .build();
+    }
+
+    public static Car buildCarWithoutClaimsAndMainDriver36WithCustumerWithoutClaimsWithID(){
+        return Car.builder()
+                .id(1L)
                 .year("2020")
                 .model("Focus")
                 .manufactured("Ford")

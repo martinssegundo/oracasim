@@ -1,14 +1,16 @@
 package br.com.tasdua.orcasim.domain.excptions;
 
+import br.com.tasdua.orcasim.domain.enums.ErrosCodeEnum;
+
 public class InsuranceException extends Exception{
 
-    private String code;
-    public InsuranceException(String code, String mesage){
-        super(mesage);
-        this.code = code;
+    private ErrosCodeEnum error;
+    public InsuranceException(ErrosCodeEnum error){
+        super();
+        this.error = error;
     }
 
-    public String getCode() {
-        return code;
+    public ErrosCodeEnum getError() {
+        return error;
     }
 }

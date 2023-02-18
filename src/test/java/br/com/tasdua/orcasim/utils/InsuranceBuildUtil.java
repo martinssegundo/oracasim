@@ -89,4 +89,13 @@ public class InsuranceBuildUtil {
                 .updatedDate(LocalDateTime.now())
                 .build();
     }
+
+    public static Insurance buildExistentInsuranceWithoutCarClaimsAndMainDriver36AndCustumerAndDriverWithoutClaim() {
+        var car = CarBuilderUtil.buildCarWithoutClaimsAndMainDriver36WithoutClaims();
+        return Insurance.builder()
+                .id(1L)
+                .active(true)
+                .car(car)
+                .build();
+    }
 }

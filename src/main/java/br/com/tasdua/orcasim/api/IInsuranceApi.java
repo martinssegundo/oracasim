@@ -1,6 +1,7 @@
 package br.com.tasdua.orcasim.api;
 
-import br.com.tasdua.orcasim.api.dto.request.InsuranceDTO;
+import br.com.tasdua.orcasim.api.dto.request.newInsurace.NewInsuranceDTO;
+import br.com.tasdua.orcasim.api.dto.request.updateInsurance.UpdateInsuranceDTO;
 import br.com.tasdua.orcasim.api.dto.response.MessageResponseDTO;
 import br.com.tasdua.orcasim.api.dto.response.ResponseInsuraceDTO;
 import br.com.tasdua.orcasim.api.dto.response.errors.ErrorDataDTO;
@@ -26,14 +27,14 @@ public interface IInsuranceApi {
             @ApiResponse(responseCode = "400",
                     content = @Content(schema = @Schema(implementation = ErrorDataDTO.class)))
     })
-    ResponseEntity<ResponseInsuraceDTO> createNewInsurance(@RequestBody InsuranceDTO insuranceDTO) throws InsuranceException;
+    ResponseEntity<ResponseInsuraceDTO> createNewInsurance(@RequestBody NewInsuranceDTO newInsuranceDTO) throws InsuranceException;
 
     @Operation
     ResponseEntity<ResponseInsuraceDTO> findInsuranceById(@PathParam("insuranceId") Long insuranceId);
 
     @Operation
     ResponseEntity<MessageResponseDTO> updateInsurance(@PathParam("insuranceId") Long insuranceId,
-                                                       @RequestBody InsuranceDTO insuranceDTO);
+                                                       @RequestBody UpdateInsuranceDTO newInsuranceDTO);
 
     @Operation
     ResponseEntity<MessageResponseDTO> deleteInsurance(@PathParam("insuranceId") Long insuranceId);

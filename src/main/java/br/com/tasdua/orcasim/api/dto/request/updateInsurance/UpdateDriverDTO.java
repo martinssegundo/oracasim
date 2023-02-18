@@ -1,4 +1,4 @@
-package br.com.tasdua.orcasim.api.dto.request;
+package br.com.tasdua.orcasim.api.dto.request.updateInsurance;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class DriverDTO {
+public class UpdateDriverDTO {
+    private Long id;
+    private Long idCustumer;
     private String name;
     private String document;
     private LocalDate bithday;
