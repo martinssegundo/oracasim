@@ -1,0 +1,256 @@
+2023-02-17 23:28:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table cars (\000a       id bigint not null,\000a        fipe_value numeric(38,2),\000a        manufactured varchar(255),\000a        model varchar(255),\000a        [*]year varchar(255),\000a        primary key (id)\000a    )"; expected "identifier"; SQL statement:
+
+    create table cars (
+       id bigint not null,
+        fipe_value numeric(38,2),
+        manufactured varchar(255),
+        model varchar(255),
+        year varchar(255),
+        primary key (id)
+    ) [42001-214]
+2023-02-17 23:28:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists car_drivers 
+       add constraint FKcnnjxu64i3vusw3upgf892au4 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:28:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists claims 
+       add constraint FK3gmd04muw1y65m031obhsgph7 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:28:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists insurances 
+       add constraint FK4iisqba8no3wvkeuco6y8pio6 
+       foreign key (driver_id) 
+       references [42102-214]
+2023-02-17 23:32:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table cars (\000a       id bigint not null,\000a        fipe_value numeric(38,2),\000a        manufactured varchar(255),\000a        model varchar(255),\000a        [*]year varchar(255),\000a        primary key (id)\000a    )"; expected "identifier"; SQL statement:
+
+    create table cars (
+       id bigint not null,
+        fipe_value numeric(38,2),
+        manufactured varchar(255),
+        model varchar(255),
+        year varchar(255),
+        primary key (id)
+    ) [42001-214]
+2023-02-17 23:32:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists car_drivers 
+       add constraint FKcnnjxu64i3vusw3upgf892au4 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:32:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists claims 
+       add constraint FK3gmd04muw1y65m031obhsgph7 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:32:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists insurances 
+       add constraint FK4iisqba8no3wvkeuco6y8pio6 
+       foreign key (driver_id) 
+       references [42102-214]
+2023-02-17 23:33:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table cars (\000a       id bigint not null,\000a        fipe_value numeric(38,2),\000a        manufactured varchar(255),\000a        model varchar(255),\000a        [*]year varchar(255),\000a        primary key (id)\000a    )"; expected "identifier"; SQL statement:
+
+    create table cars (
+       id bigint not null,
+        fipe_value numeric(38,2),
+        manufactured varchar(255),
+        model varchar(255),
+        year varchar(255),
+        primary key (id)
+    ) [42001-214]
+2023-02-17 23:33:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists car_drivers 
+       add constraint FKcnnjxu64i3vusw3upgf892au4 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:33:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists claims 
+       add constraint FK3gmd04muw1y65m031obhsgph7 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:33:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists insurances 
+       add constraint FK4iisqba8no3wvkeuco6y8pio6 
+       foreign key (driver_id) 
+       references [42102-214]
+2023-02-17 23:34:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table cars (\000a       id bigint not null,\000a        fipe_value numeric(38,2),\000a        manufactured varchar(255),\000a        model varchar(255),\000a        [*]year varchar(255),\000a        primary key (id)\000a    )"; expected "identifier"; SQL statement:
+
+    create table cars (
+       id bigint not null,
+        fipe_value numeric(38,2),
+        manufactured varchar(255),
+        model varchar(255),
+        year varchar(255),
+        primary key (id)
+    ) [42001-214]
+2023-02-17 23:34:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists car_drivers 
+       add constraint FKcnnjxu64i3vusw3upgf892au4 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:34:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists claims 
+       add constraint FK3gmd04muw1y65m031obhsgph7 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:34:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists insurances 
+       add constraint FK4iisqba8no3wvkeuco6y8pio6 
+       foreign key (driver_id) 
+       references [42102-214]
+2023-02-17 23:37:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table cars (\000a       id bigint not null,\000a        fipe_value numeric(38,2),\000a        manufactured varchar(255),\000a        model varchar(255),\000a        [*]year varchar(255),\000a        primary key (id)\000a    )"; expected "identifier"; SQL statement:
+
+    create table cars (
+       id bigint not null,
+        fipe_value numeric(38,2),
+        manufactured varchar(255),
+        model varchar(255),
+        year varchar(255),
+        primary key (id)
+    ) [42001-214]
+2023-02-17 23:37:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists car_drivers 
+       add constraint FKcnnjxu64i3vusw3upgf892au4 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:37:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists claims 
+       add constraint FK3gmd04muw1y65m031obhsgph7 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:37:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists insurances 
+       add constraint FK4iisqba8no3wvkeuco6y8pio6 
+       foreign key (driver_id) 
+       references [42102-214]
+2023-02-17 23:39:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table car (\000a       id bigint not null,\000a        fipe_value numeric(38,2),\000a        manufactured varchar(255),\000a        model varchar(255),\000a        [*]year varchar(255),\000a        primary key (id)\000a    )"; expected "identifier"; SQL statement:
+
+    create table car (
+       id bigint not null,
+        fipe_value numeric(38,2),
+        manufactured varchar(255),
+        model varchar(255),
+        year varchar(255),
+        primary key (id)
+    ) [42001-214]
+2023-02-17 23:39:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CAR" not found; SQL statement:
+
+    alter table if exists car_drivers 
+       add constraint FKljkrdqf9avdo302h4u1y7v797 
+       foreign key (car_id) 
+       reference [42102-214]
+2023-02-17 23:39:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CAR" not found; SQL statement:
+
+    alter table if exists claims 
+       add constraint FKdqe9iqrpwo57fh0cnodqqkfg5 
+       foreign key (car_id) 
+       reference [42102-214]
+2023-02-17 23:39:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CAR" not found; SQL statement:
+
+    alter table if exists insurances 
+       add constraint FKphwk2o4kne9fwk7ixt3dcyqn5 
+       foreign key (driver_id) 
+       reference [42102-214]
+2023-02-17 23:40:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table cars (\000a       id bigint not null,\000a        fipe_value numeric(38,2),\000a        manufacturer varchar(255),\000a        model varchar(255),\000a        [*]year varchar(255),\000a        primary key (id)\000a    )"; expected "identifier"; SQL statement:
+
+    create table cars (
+       id bigint not null,
+        fipe_value numeric(38,2),
+        manufacturer varchar(255),
+        model varchar(255),
+        year varchar(255),
+        primary key (id)
+    ) [42001-214]
+2023-02-17 23:40:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists car_drivers 
+       add constraint FKcnnjxu64i3vusw3upgf892au4 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:40:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists claims 
+       add constraint FK3gmd04muw1y65m031obhsgph7 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:40:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists insurances 
+       add constraint FK4iisqba8no3wvkeuco6y8pio6 
+       foreign key (driver_id) 
+       references [42102-214]
+2023-02-17 23:40:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table cars (\000a       id bigint not null,\000a        fipe_value numeric(38,2),\000a        manufacturer varchar(255),\000a        models varchar(255),\000a        [*]year varchar(255),\000a        primary key (id)\000a    )"; expected "identifier"; SQL statement:
+
+    create table cars (
+       id bigint not null,
+        fipe_value numeric(38,2),
+        manufacturer varchar(255),
+        models varchar(255),
+        year varchar(255),
+        primary key (id)
+    ) [42001-214]
+2023-02-17 23:40:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists car_drivers 
+       add constraint FKcnnjxu64i3vusw3upgf892au4 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:40:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists claims 
+       add constraint FK3gmd04muw1y65m031obhsgph7 
+       foreign key (car_id) 
+       references [42102-214]
+2023-02-17 23:40:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARS" not found; SQL statement:
+
+    alter table if exists insurances 
+       add constraint FK4iisqba8no3wvkeuco6y8pio6 
+       foreign key (driver_id) 
+       references [42102-214]

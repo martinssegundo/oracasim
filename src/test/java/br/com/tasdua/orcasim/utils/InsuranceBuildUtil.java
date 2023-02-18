@@ -7,6 +7,20 @@ import java.time.LocalDateTime;
 
 public class InsuranceBuildUtil {
 
+    public static Insurance buildNewInsuranceWithoutCar() {
+        return Insurance.builder()
+                .active(true)
+                .build();
+    }
+
+    public static Insurance buildNewInsuranceWithCarWithoutDriver() {
+        var car = CarBuilderUtil.buildCarWithClaimsWithoutDriver();
+        return Insurance.builder()
+                .active(true)
+                .car(car)
+                .build();
+    }
+
     public static Insurance buildNewInsuranceWithCarClaimsAndDriver18AndDriverWithClaim() {
         var car = CarBuilderUtil.buildCarWithClaimsAndMainDriver18WithClaims();
         return Insurance.builder()

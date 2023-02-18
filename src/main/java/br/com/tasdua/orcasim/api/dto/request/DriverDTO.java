@@ -17,5 +17,6 @@ public class DriverDTO {
     private String document;
     private LocalDate bithday;
     private boolean mainDriver;
+    private boolean custumer;
     private List<LocalDate> claims;
 }

@@ -1,11 +1,14 @@
-package br.com.tasdua.orcasim.api;
+package br.com.tasdua.orcasim.api.impl;
 
+import br.com.tasdua.orcasim.api.IInsuranceApi;
 import br.com.tasdua.orcasim.api.dto.request.InsuranceDTO;
 import br.com.tasdua.orcasim.api.dto.response.MessageResponseDTO;
 import br.com.tasdua.orcasim.api.dto.response.ResponseInsuraceDTO;
 import br.com.tasdua.orcasim.domain.excptions.InsuranceException;
 import br.com.tasdua.orcasim.domain.usercases.ICreateNewInsurance;
 import br.com.tasdua.orcasim.mappers.InsuranceMapper;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("V1/insurance/budget")
-public class InsuranceApi {
+public class InsuranceApi implements IInsuranceApi {
 
     private ICreateNewInsurance newInsuramceUserCase;
     private InsuranceMapper insuranceMapper;

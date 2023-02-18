@@ -38,8 +38,11 @@ public interface RepositoryDomainMapper {
     Car convertToCar(CarEntity car);
 
 
-    @Mapping(source = "car.id",target = "id")
-    CarDriverEntity convertToCarDriverEntity(Car car, Driver driver);
+    @Mapping(target = "id", ignore = true)
+    @Mapping(source = "carDomain.id",target = "car.id")
+    @Mapping(source = "driverDomain.id",target = "driver.id")
+    @Mapping(source = "driverDomain.mainDriver",target = "mainDriver")
+    CarDriverEntity convertToCarDriverEntity(Car carDomain, Driver driverDomain);
 
 
     @Mapping(source = "driverDomain.id",target = "driver.id")

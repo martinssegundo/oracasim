@@ -1,5 +1,5 @@
 package br.com.tasdua.orcasim.domain.excptions;
 
-public class CustumerNotFoundException extends Exception{
+public class CustumerNotFoundException  extends Throwable {
 
 }

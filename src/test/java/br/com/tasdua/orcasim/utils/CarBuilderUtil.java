@@ -9,6 +9,16 @@ import java.util.List;
 
 public class CarBuilderUtil {
 
+    public static Car buildCarWithClaimsWithoutDriver(){
+        return Car.builder()
+                .year("2020")
+                .model("Focus")
+                .manufactured("Ford")
+                .fipeValue(new BigDecimal(85750.35))
+                .claims(List.of(LocalDate.now()))
+                .build();
+    }
+
     public static Car buildCarWithClaimsAndMainDriver18WithClaims(){
         return Car.builder()
                 .year("2020")

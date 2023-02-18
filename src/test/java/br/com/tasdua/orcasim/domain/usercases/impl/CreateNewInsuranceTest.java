@@ -75,7 +75,7 @@ class CreateNewInsuranceTest {
 
 
     @Test
-    void testNewInsuranceWithCustumer() throws InsuranceException {
+    void testNewInsuranceWithCustumerExcption() {
         when(carRepository.save(any(CarEntity.class)))
                 .thenReturn(
                         CarBuilderUtil.buildCarEntityWithID()
@@ -102,6 +102,33 @@ class CreateNewInsuranceTest {
                 () -> createNewInsurance.newInsurance(
                         InsuranceBuildUtil
                                 .buildNewInsuranceWithoutCarClaimsAndDriver36WithoutCustumerAndDriverWithoutClaim()
+                )
+        );
+    }
+
+    @Test
+    void testNewInsuranceWithCarExcption() {
+        assertThrows(InsuranceException.class,
+                () -> createNewInsurance.newInsurance(
+                        InsuranceBuildUtil
+                                .buildNewInsuranceWithoutCar()
+                )
+        );
+    }
+
+
+    @Test
+    void testNewInsuranceWithDriverExcption() {
+        when(carRepository.save(any(CarEntity.class)))
+                .thenReturn(
+                        CarBuilderUtil.buildCarEntityWithID()
+                );
+
+
+        assertThrows(InsuranceException.class,
+                () -> createNewInsurance.newInsurance(
+                        InsuranceBuildUtil
+                                .buildNewInsuranceWithCarWithoutDriver()
                 )
         );
     }
