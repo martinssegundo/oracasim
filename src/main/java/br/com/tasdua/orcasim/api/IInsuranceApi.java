@@ -36,6 +36,12 @@ public interface IInsuranceApi {
     ResponseEntity<MessageResponseDTO> updateInsurance(@PathParam("insuranceId") Long insuranceId,
                                                        @RequestBody UpdateInsuranceDTO newInsuranceDTO);
 
-    @Operation
-    ResponseEntity<MessageResponseDTO> deleteInsurance(@PathParam("insuranceId") Long insuranceId);
+    @Operation(summary = "Delete Insurance",
+            description = "Delete Insurance")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201"),
+            @ApiResponse(responseCode = "400",
+                    content = @Content(schema = @Schema(implementation = ErrorDataDTO.class)))
+    })
+    ResponseEntity<MessageResponseDTO> deleteInsurance(@PathParam("insuranceId") Long insuranceId) throws Throwable;
 }

@@ -7,9 +7,12 @@ import br.com.tasdua.orcasim.api.dto.response.MessageResponseDTO;
 import br.com.tasdua.orcasim.api.dto.response.ResponseInsuraceDTO;
 import br.com.tasdua.orcasim.domain.excptions.InsuranceException;
 import br.com.tasdua.orcasim.domain.usecases.ICreateNewInsurance;
+import br.com.tasdua.orcasim.domain.usecases.IITemDelete;
+import br.com.tasdua.orcasim.domain.usecases.IITemFinder;
 import br.com.tasdua.orcasim.mappers.InsuranceMapper;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +30,19 @@ public class InsuranceApi implements IInsuranceApi {
     private int defaulPercentInsuramce;
 
     private ICreateNewInsurance newInsuramceUserCase;
+
+    private IITemDelete deleteInsurance;
+    private IITemFinder finderIsurance;
     private InsuranceMapper insuranceMapper;
 
     @Autowired
     public InsuranceApi(ICreateNewInsurance newInsuramceUserCase,
+                        @Qualifier("deleteInsurance") IITemDelete deleteInsurance,
+                        @Qualifier("deleteInsurance") IITemFinder finderIsurance,
                         InsuranceMapper insuranceMapper) {
         this.newInsuramceUserCase = newInsuramceUserCase;
+        this.deleteInsurance = deleteInsurance;
+        this.finderIsurance = finderIsurance;
         this.insuranceMapper = insuranceMapper;
     }
 
@@ -58,7 +68,7 @@ public class InsuranceApi implements IInsuranceApi {
         return null;
     }
 
-    @PostMapping("/{insuranceId}")
+    @PutMapping("/{insuranceId}")
     public ResponseEntity<MessageResponseDTO> updateInsurance(@PathParam("insuranceId") Long insuranceId,
                                                               @RequestBody UpdateInsuranceDTO newInsuranceDTO) {
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -69,7 +79,8 @@ public class InsuranceApi implements IInsuranceApi {
 
 
     @DeleteMapping("/{insuranceId}")
-    public ResponseEntity<MessageResponseDTO> deleteInsurance(@PathParam("insuranceId") Long insuranceId) {
+    public ResponseEntity<MessageResponseDTO> deleteInsurance(@PathParam("insuranceId") Long insuranceId) throws Throwable {
+        deleteInsurance.deleteItem(insuranceId);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(MessageResponseDTO.builder()
                         .data("Orcamento deletado com sucesso")
